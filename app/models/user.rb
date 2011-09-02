@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  concerned_with :states, :activation, :posting, :validation
+  concerned_with :states, :activation, :posting, :validation, :hvz_overrides
   formats_attributes :bio
 
   belongs_to :site, :counter_cache => true
@@ -86,6 +86,6 @@ class User < ActiveRecord::Base
   end
   
   def hvz_user
-    @hvz_user ||=HvzUser.where(:id => hvz_user_id).first
+    @hvz_user ||= HvzUser.where(:id => hvz_user_id).first
   end
 end

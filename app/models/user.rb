@@ -84,4 +84,8 @@ class User < ActiveRecord::Base
     options[:except] += [:email, :login_key, :login_key_expires_at, :password_hash, :openid_url, :activated, :admin]
     super
   end
+  
+  def hvz_user
+    @hvz_user ||=HvzUser.where(:id => hvz_user_id).first
+  end
 end

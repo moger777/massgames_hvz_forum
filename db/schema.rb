@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090317123901) do
+ActiveRecord::Schema.define(:version => 20110828131057) do
 
   create_table "brain_busters", :force => true do |t|
     t.string "question"
@@ -31,6 +31,11 @@ ActiveRecord::Schema.define(:version => 20090317123901) do
 
   add_index "forums", ["position", "site_id"], :name => "index_forums_on_position_and_site_id"
   add_index "forums", ["site_id", "permalink"], :name => "index_forums_on_site_id_and_permalink"
+
+  create_table "hvz_users", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "moderatorships", :force => true do |t|
     t.integer  "forum_id"
@@ -138,6 +143,7 @@ ActiveRecord::Schema.define(:version => 20090317123901) do
     t.string   "bio"
     t.string   "display_name"
     t.string   "permalink"
+    t.integer  "hvz_user_id"
   end
 
   add_index "users", ["last_seen_at"], :name => "index_users_on_last_seen_at"

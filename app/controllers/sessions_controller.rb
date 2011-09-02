@@ -65,6 +65,7 @@ class SessionsController < ApplicationController
       new_cookie_flag = (params[:remember_me] == "1")
       handle_remember_cookie! new_cookie_flag
       session[:user_id] = @current_user.id
+      update_player_status
       redirect_back_or_default('/')
     end
 

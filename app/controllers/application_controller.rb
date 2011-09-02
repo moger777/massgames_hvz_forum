@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_page
   before_filter :login_required, :only => [:new, :edit, :create, :update, :destroy]
+  before_filter :update_player_status
 
   # See ActionController::RequestForgeryProtection for details
   # Uncomment the :secret if you're not using the cookie session store
@@ -19,4 +20,14 @@ class ApplicationController < ActionController::Base
     @page ||= [1, params[:page].to_i].max
   end
 
+  def update_player_status
+    if hvz_user = current_user.try(:hvz_user)
+      if hvz_user.updated_at != session[:hvz_user_updated_at]
+        hvz_user.player_status.each do |key, value|
+          session[key.to_sym] = value
+        end
+        session[:hvz_user_updated_at] = hvz_user.updated_at
+      end
+    end
+  end
 end

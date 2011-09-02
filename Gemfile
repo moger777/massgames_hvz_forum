@@ -20,6 +20,5 @@ group :development, :test do
   gem 'rails3-generators'
 end
 
-group :production do
-  gem 'mysql2', '~> 0.2.7'
-end
+gem 'mysql2', '~> 0.2.7'
+

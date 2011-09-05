@@ -36,7 +36,11 @@
       <% end %>
     </td>
     <td class="c2 vat">
-      <%= link_to forum.name, forum_path(forum), :class => "title" %>
+      <% if is_proper_creature_type(forum) %>
+        <%= link_to forum.name, forum_path(forum), :class => "title" %>
+      <% else %>
+        <span class='title'><%= forum.name %></span>
+      <% end %>
       <div class="posts">
         <%= I18n.t 'txt.count_topics', :count => forum.topics.size, :num => number_with_delimiter(forum.topics.size) %>,
         <%= I18n.t 'txt.count_posts', :count => forum.posts.size, :num => number_with_delimiter(forum.posts.size) %>

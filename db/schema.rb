@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110828131057) do
+ActiveRecord::Schema.define(:version => 20110903134330) do
 
   create_table "brain_busters", :force => true do |t|
     t.string "question"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(:version => 20110828131057) do
     t.text    "description_html"
     t.string  "state",            :default => "public"
     t.string  "permalink"
+    t.string  "creature_type",    :default => "all"
   end
 
   add_index "forums", ["position", "site_id"], :name => "index_forums_on_position_and_site_id"

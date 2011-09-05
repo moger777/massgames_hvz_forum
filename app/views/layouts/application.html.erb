@@ -4,6 +4,10 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title><%= current_site && current_site.name || I18n.t('txt.beast_title', :default => 'Altered Beast') %><%= " - " + @page_title if @page_title %></title>
     <%= stylesheet_link_tag %w(display captcha) %>
+    <%= javascript_include_tag 'jquery.min.js' %>
+    <script type='text/javascript'>
+      jQuery.noConflict();
+    </script>
     <%= javascript_include_tag %w(prototype effects lowpro rails application), :cache => "beast" %>
     <% @feed_icons.each do |feed| %>
     <%= auto_discovery_link_tag :atom, feed[:url], :title => "Subscribe to '#{feed[:title]}'" %>

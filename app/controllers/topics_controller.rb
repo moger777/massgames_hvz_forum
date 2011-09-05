@@ -1,5 +1,6 @@
 class TopicsController < ApplicationController
   before_filter :find_forum
+  before_filter :must_be_proper_creature_type
   before_filter :find_topic, :only => [:show, :edit, :update, :destroy]
 
   def index

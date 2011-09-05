@@ -85,7 +85,4 @@ class User < ActiveRecord::Base
     super
   end
   
-  def hvz_user
-    @hvz_user ||= HvzUser.where(:id => hvz_user_id).first
-  end
 end

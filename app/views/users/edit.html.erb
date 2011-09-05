@@ -29,6 +29,7 @@
 <%= form_for @user do |f| %>
   <%= f.error_messages %>
   <%= render :partial => "settings", :object => f %>
+  <%= render :partial => 'hvz_user', :locals => {:f => f} unless @user.hvz_user %>
   <p><%= submit_tag I18n.t('txt.views_users.change_email_or_password', :default => 'Change e-mail or password') %></p>
 <% end %>
 

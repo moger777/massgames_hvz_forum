@@ -30,4 +30,19 @@ class ApplicationController < ActionController::Base
       end
     end
   end
+
+  def is_proper_creature_type(forum = nil)
+    forum ||= @forum
+    allowed = true if admin?
+    allowed = allowed || forum.creature_type == 'all'
+    allowed = allowed || session[:creature_type] == forum.creature_type
+  end
+  helper_method :is_proper_creature_type
+  
+  def must_be_proper_creature_type
+    unless is_proper_creature_type
+      render :text => "only #{@forum.creature_type} is allowed here"
+    end
+  end
+  
 end

@@ -1,6 +1,7 @@
 class ForumsController < ApplicationController
   before_filter :admin_required, :except => [:index, :show]
   before_filter :find_forum, :only => [:show, :edit, :update, :destroy]
+  before_filter :must_be_proper_creature_type, :only => [:show, :edit, :update, :destroy]
 
   # GET /forums
   # GET /forums.xml

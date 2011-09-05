@@ -29,7 +29,7 @@ class HvzRequest
     self.request.body = form_data.to_xml(:root => root) if form_data
     self.request.content_type = 'text/xml'
     self.response = Net::HTTP.start(url.host, url.port) {|http| http.request(self.request)}
-    self.attributes = Hash.from_xml(self.response.body).values.first
+    self.attributes = Hash.from_xml(self.response.body).values.first.with_indifferent_access
   end
   
   private

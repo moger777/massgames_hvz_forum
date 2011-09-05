@@ -17,3 +17,12 @@
   <label><%= I18n.t 'txt.views_forums.desc', :default => 'Description' %></label><br />
   <%= form.text_area :description, :rows => 7 %>
 </p>
+
+<p id='forum_creature_types'>
+  <label><%= I18n.t 'txt.views_forums.creature_types', :default => 'Creature Types' %></label><br />
+  <% CreatureType.all.each do |creature_type| %>
+    <%= form.radio_button :creature_type, creature_type %>
+    <%= creature_type %>
+    <br />
+  <% end %>
+</p>

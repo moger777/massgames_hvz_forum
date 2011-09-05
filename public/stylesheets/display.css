@@ -8,6 +8,10 @@ body
 
 a { color: #24b; }
 
+:disabled{
+  background-color: #EEEEEE;
+}
+
 #container
 {
 	width:92%;

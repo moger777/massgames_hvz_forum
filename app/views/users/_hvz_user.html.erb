@@ -1,0 +1,31 @@
+
+<p><label for="hvz_user"><%= I18n.t 'txt.hvz_user', :default => 'Link Humans Vs. Zombies account to forum. Uncheck if you don\'t have an hvz account.' %></label><br/>
+<%= check_box_tag :hvz_user, '1', true %></p>
+
+<div id='hvz_user_fields'>
+  <p><label for="hvz_username"><%= I18n.t 'txt.hvz_username', :default => 'Hvz Username' %></label><br/>
+  <%= f.text_field :hvz_username %></p>
+
+  <p><label for="hvz_password"><%= I18n.t 'txt.hvz_password', :default => 'Hvz Password' %></label><br/>
+  <%= f.password_field :hvz_password %></p>
+</div>
+
+<script type='text/javascript'>
+jQuery(document).ready(function($) {
+  function checkHvzUser(){
+    var fields = ['#user_hvz_username', '#user_hvz_password']
+    if($('#hvz_user:checked').val() == '1'){
+      $.each(fields, function(index, value){
+        $(value).attr('disabled', null);
+      });
+    }else{
+      $.each(fields, function(index, value){
+        $(value).attr('disabled', 'disabled');
+      });
+    }
+  }
+  $('#hvz_user').bind('click', checkHvzUser);
+  checkHvzUser();
+})
+
+</script>

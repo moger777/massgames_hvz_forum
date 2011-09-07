@@ -89,10 +89,10 @@
 
     <%= avatar_for post.user %>
     <span class="fn"><%= link_to truncate(post.user.display_name, :length => 15), user_path(post.user), :class => (post.user == @posts.first.user ? "threadauthor" : nil) %></span>
-    <% if post.user.admin? || post.forum.moderators.include?(post.user) || !post.user.active? %>
     <span class="creature_type">
       (<span class='<%= post.user.creature_type%>'><%= post.user.creature_type %></span>)
     </span>
+    <% if post.user.admin? || post.forum.moderators.include?(post.user) || !post.user.active? %>
     <span class="admin">
       <% if post.user.admin? %>
         <%= I18n.t 'txt.user_is_administrator', :default => 'Administator' %>

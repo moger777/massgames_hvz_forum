@@ -17,21 +17,10 @@ class UsersController < ApplicationController
   end
 
   def new
-    @user = User.new
+    redirect_to HvzRequest.host + '/register'
   end
 
   def create
-    cookies.delete :auth_token
-    @user = current_site.users.build(params[:user])    
-    @user.save if @user.valid?
-    @user.register! if @user.valid?
-    unless @user.new_record?
-      redirect_back_or_default('/login')
-      flash[:notice] = I18n.t 'txt.activation_required', 
-        :default => "Thanks for signing up! Please click the link in your email to activate your account"
-    else
-      render :action => 'new'
-    end
   end
 
   def settings

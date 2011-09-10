@@ -13,7 +13,7 @@
   <li class="logout"><%= link_to I18n.t('txt.settings', :default => 'Settings'), settings_path %></li>
   <li class="logout"><%= link_to I18n.t('txt.logout', :default => 'Logout'), logout_path(:to => CGI.escape(request.fullpath)) %></li>
   <% else %>
-  <li><%= link_to I18n.t('txt.signup', :default => 'Signup'), signup_path(:to => CGI.escape(request.fullpath)) %></li>
+  <li><%= link_to I18n.t('txt.signup', :default => 'Signup'), HvzRequest.host + 'register' %></li>
   <li><%= link_to I18n.t('txt.login', :default => 'Login'), login_path(:to => CGI.escape(request.fullpath)) %></li>
   <% end %>
 </ul>

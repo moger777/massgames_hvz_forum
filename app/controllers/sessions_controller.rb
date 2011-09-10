@@ -27,7 +27,10 @@ class SessionsController < ApplicationController
   protected
 
     def password_authentication(name, password)
-      if @current_user = current_site.users.authenticate(name, password)
+      hvz_session = HvzSession.new(name, password)
+      hvz_session.send
+      hvz_user = HvzUser.find_by_id(hvz_session.attributes[:id])
+      if @current_user = hvz_user.try(:user)
         successful_login
       else
         failed_login I18n.t('txt.invalid_login', :default => "Invalid login")

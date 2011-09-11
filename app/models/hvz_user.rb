@@ -8,6 +8,15 @@ class HvzUser < Hvz
   end
   
   def user
-    User.find_by_hvz_user_id(self.id)
+    user = User.find_by_hvz_user_id(self.id)
+    unless user
+      user = User.new
+      user.login = self.username
+      user.email = self.email_address
+      user.hvz_user_id = self.id
+      user.admin = self.is_admin
+      user.save
+    end
+    user
   end
 end

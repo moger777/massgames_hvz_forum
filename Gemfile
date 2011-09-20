@@ -13,12 +13,12 @@ gem 'acts_as_state_machine'
 gem 'permalink_fu'
 
 group :development, :test do
-  gem 'rspec-rails'
-  gem 'highline'
-  #gem 'sqlite3-ruby', :require => "sqlite3"
-  # gem 'ruby-debug19'
-  gem 'autotest'
-  gem 'rails3-generators'
+  #gem 'rspec-rails'
+  #gem 'highline'
+  ##gem 'sqlite3-ruby', :require => "sqlite3"
+  ## gem 'ruby-debug19'
+  #gem 'autotest'
+  #gem 'rails3-generators'
 end
 
 gem 'mysql2', '~> 0.2.7'

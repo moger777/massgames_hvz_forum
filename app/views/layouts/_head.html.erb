@@ -7,7 +7,7 @@
     <% end %>
   </li>
   <li><%= link_to_function I18n.t('txt.search', :default => 'Search'), "#", :href => root_path, :id => 'search-link' %></li>
-  <li class="hvz"><a href='http://testhvz.massgamesrso.org'>Humans Vs. Zombies</a>
+  <li class="hvz"><a href='<%= HvzRequest.host %>'>Humans Vs. Zombies</a>
   <% if current_site and logged_in? %>
   <li class="login"><%=  link_to current_user.display_name, user_path(current_user) %></li>
   <li class="logout"><%= link_to I18n.t('txt.settings', :default => 'Settings'), settings_path %></li>

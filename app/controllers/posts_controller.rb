@@ -10,6 +10,7 @@ class PostsController < ApplicationController
   # /forums/1/topics/1/posts
   def index
     @posts = (@parent ? @parent.posts : current_site.posts).search(params[:q], :page => current_page)
+    @posts = @posts.includes(:forum).where(:forums => {:creature_type => session[:creature_type]}) unless session[:creature_type] == 'all'
     @users = @user ? {@user.id => @user} : User.index_from(@posts)
     respond_to do |format|
       format.html # index.html.erb
